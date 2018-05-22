@@ -20,22 +20,24 @@ document.onkeyup = function(anyKey) {
   
     document.onkeyup = function(e) {
       let guess = e.key;
-      guesses -= 1;
       console.log('You have: ' + guesses);
       console.log('You guessed: ' + guess);
       
       // push guess into lettersGuessed[]
-    lettersGuessed.push(String(guess.toLowerCase()));
-
-    if (guess.match(currentWordArray) === null){
+      lettersGuessed.push(String(guess.toLowerCase()));
+      
+      for(let i=0; i < currentWordArray.length; i++) {
+        if (currentWordArray[i].charAt(0) === guess) {
+          console.log('You guessed wisely');
+          console.log('current guesses: '+ lettersGuessed.toLocaleString());
+          break;
+        }
+        else{
+        guesses -= 1;
         console.log('You guessed poorly');
         console.log('current guesses: '+ lettersGuessed.toLocaleString());
-    }
-    else{
-        console.log('You guessed wisely');
-      console.log('current guesses: '+ lettersGuessed.toLocaleString());
-
-    }
+    };
+  };
     
   };
 };
