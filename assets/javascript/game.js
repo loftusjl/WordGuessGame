@@ -4,6 +4,8 @@ let wins = 0;
 // word array
 let hangWords = ['zombie', 'cthulu', 'chucky', 'dracula', 'jason', 'freddy', 'wolfman', 'damien', 'mephisto', 'pinhead', 'susan'];
 
+console.log(`Press any key to start`); // change to alert or HTML element
+
 document.onkeyup = function(anyKey) {
   // Determines which key was pressed. Will start the game.
   let guesses = 6;
@@ -20,24 +22,29 @@ document.onkeyup = function(anyKey) {
   
     document.onkeyup = function(e) {
       let guess = e.key;
-      console.log('You have: ' + guesses);
+      console.log(`You have: ${guesses} guesses remaining`);
       console.log('You guessed: ' + guess);
       
       // push guess into lettersGuessed[]
       lettersGuessed.push(String(guess.toLowerCase()));
       
-      for(let i=0; i < currentWordArray.length; i++) {
+      let lettersFound = 0; // use lettersFound === currentWordArray.length as win condition
+      
+      // check for correct guess. iterate either letters found or guesses.
+      for(let i=0; i < currentWordArray.length; i++) { 
         if (currentWordArray[i].charAt(0) === guess) {
-          console.log('You guessed wisely');
-          console.log('current guesses: '+ lettersGuessed.toLocaleString());
-          break;
-        }
-        else{
-        guesses -= 1;
+          lettersFound++;
+        };
+      };
+      
+      if (lettersFound > 0) { // console feedback. change to alert or html at some point
+        console.log('You guessed wisely');
+      }
+      else {
         console.log('You guessed poorly');
-        console.log('current guesses: '+ lettersGuessed.toLocaleString());
-    };
-  };
-    
+        guesses--;
+      }
+      console.log('current guesses: '+ lettersGuessed.toLocaleString());
+      
   };
 };
