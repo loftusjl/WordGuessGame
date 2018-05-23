@@ -18,12 +18,18 @@ document.onkeyup = function(anyKey) {
   console.log(currentWord);
   // current word letters array
   let currentWordArray = currentWord.split('');
-
-  // letters guessed array
-  let lettersGuessed = [];
-    // for (var i = 0; i < currentWord.length; i++) {
-    //   lettersGuessed[i] = '_';
-    // }
+  
+  // Make into function
+  // let currentWordDisplay = [];
+  // for (i = 0; i < currentWordArray.length; i++) {
+  //   currentWordDisplay.push('_');
+  // };
+  // $('#current-word').innerHTML(currentWordDisplay.toString());
+  // // letters guessed array
+  // let lettersGuessed = [];
+  //   // for (var i = 0; i < currentWord.length; i++) {
+  //   //   lettersGuessed[i] = '_';
+  //   // }
 
     let remain = currentWord.length;
     console.log(remain);
