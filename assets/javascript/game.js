@@ -8,7 +8,6 @@ var guesses = 6;
 var correctGuesses = 0;
 var lettersGuessed = [];
 
-
 console.log(`Press any key to start`); // change to alert or HTML element
 // let anyKey = document.getElementById('#anyKey');
 $('#anyKey').show();
@@ -23,12 +22,13 @@ console.log(remain);
 document.onkeyup = function (e) {
   let guess = e.key;
   let lettersFound = 0; // use lettersFound === currentWordArray.length as win condition
-  
-  lettersGuessed.push(String(guess.toLowerCase())); // push guess into lettersGuessed[]
-  
   // check for correct guess. iterate either letters found or guesses.
-  if (lettersGuessed.includes(guess)) {}
+  if (lettersGuessed.includes(guess)) { // ignore letters already guessed
+    console.log('choose another letter: ' + guess);
+  }
   else{
+    lettersGuessed.push(String(guess.toLowerCase())); // push guess into lettersGuessed[]
+
     for (let i = 0; i < currentWordArray.length; i++) {
       if (currentWordArray[i].charAt(0) === guess) {
         lettersFound++;
@@ -37,24 +37,22 @@ document.onkeyup = function (e) {
         $('#guessesMade').append(' ' + guess + ',');
       }
     };
-  };
-
-  $('#current-word').text(currentWordDisplay.join(' ')); // print current word with correct guesses to site
-
-  if (correctGuesses >= currentWordArray.length) {
-    youWin();
-  }
-  // else if (lettersFound > 0) {} // letter guessed but no win yet.
-  else {
-    guesses--;
-    $('#guessesLeft').text(guesses);
-    $('#guessesMade').append(' ' + guess + ',');
-    if (guesses < 1) { //game over and reset. change from alert to high z-index html 
-      youLose();
+    $('#current-word').text(currentWordDisplay.join(' ')); // print current word with correct guesses to site
+  
+    if (correctGuesses >= currentWordArray.length) {
+      youWin();
+    }
+    // else if (lettersFound > 0) {} // letter guessed but no win yet.
+    else {
+      guesses--;
+      $('#guessesLeft').text(guesses);
+      $('#guessesMade').append(' ' + guess + ',');
+      if (guesses < 1) { //game over and reset. change from alert to high z-index html 
+        youLose();
+      };
     };
   };
 };
-
 
 //------------------------FUNCTIONS------------------------//
 function youWin() {
