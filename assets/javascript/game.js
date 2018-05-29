@@ -28,13 +28,13 @@ document.onkeyup = function (e) {
   }
   else{
     lettersGuessed.push(String(guess.toLowerCase())); // push guess into lettersGuessed[]
+    $('#guessesMade').append(' ' + guess + ',');
 
     for (let i = 0; i < currentWordArray.length; i++) {
       if (currentWordArray[i].charAt(0) === guess) {
         lettersFound++;
         correctGuesses++;
         currentWordDisplay[i] = guess;
-        $('#guessesMade').append(' ' + guess + ',');
       }
     };
     $('#current-word').text(currentWordDisplay.join(' ')); // print current word with correct guesses to site
@@ -46,7 +46,7 @@ document.onkeyup = function (e) {
     else {
       guesses--;
       $('#guessesLeft').text(guesses);
-      $('#guessesMade').append(' ' + guess + ',');
+      // $('#guessesMade').append(' ' + guess + ',');
       if (guesses < 1) { //game over and reset. change from alert to high z-index html 
         youLose();
       };
