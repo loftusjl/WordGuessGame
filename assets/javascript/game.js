@@ -1,11 +1,13 @@
 let wins = 0;
+let losses = 0;
+
 let hangWords = ['zombie', 'cthulhu', 'chucky', 'dracula', 'jason', 'freddy', 'wolfman', 'damien', 'mephisto', 'pinhead', 'susan'];
 
 console.log(`Press any key to start`); // change to alert or HTML element
-// let anyKe/y = document.getElementById('anyKey');
+// let anyKey = document.getElementById('#anyKey');
 // $('#anyKey').show();
 
-document.onkeyup = function (anyKey) {
+document.onkeyup = function () {
   $('#anyKey').hide();
   // Determines which key was pressed. Will start the game.
   let guesses = 6;
@@ -33,7 +35,7 @@ document.onkeyup = function (anyKey) {
     let guess = e.key;
     let lettersFound = 0; // use lettersFound === currentWordArray.length as win condition
     let guessesLeftElement = document.getElementById('guessesLeft');
-    
+
     console.log(`You have: ${guesses} guesses remaining`);
     console.log('You guessed: ' + guess);
     
@@ -46,32 +48,30 @@ document.onkeyup = function (anyKey) {
         lettersFound++;
         correctGuesses++;
         currentWordDisplay[i] = guess;
-      };
+        $('#guessesMade').append(' ' + guess + ',');
+      }
     };
+    // console.log(lettersFound);
     $('#current-word').text(currentWordDisplay.join(' ')); // print blank current word to site
-    
     if (correctGuesses >= currentWordArray.length) {
-     
-    console.log('You Win!');
-
-    } 
-    else if (lettersFound > 0) {
-      console.log('You guessed wisely');
+      wins++;
+      $('#wins').text(wins);
+      alert('You Win!');
+      
     }
+    else if (lettersFound > 0) {}
     else {
-      console.log('You guessed poorly');
       guesses--;
       guessesLeftElement.innerHTML = guesses;
-
-      console.log('current guesses: ' + lettersGuessed.toLocaleString());
-      //adds guesses to HTML
       $('#guessesMade').append(' ' + guess + ',');
       
       if (guesses < 1) { //game over and reset. change from alert to high z-index html 
-        let b = playAgain(confirm("YOU LOSE! Play again?"));
-        if (b == true) {document.location.reload(); // reload site
-        } else {alert(`Click refresh or hit F5 if you change your mind.`)};
+        losses++;
+        $('#losses').text(losses);
+        
+        alert("YOU LOSE!");
       };
-    }
+    };
+    
   };
 };
