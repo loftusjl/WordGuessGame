@@ -1,7 +1,61 @@
 /* font-family: 'Sedgwick Ave Display', cursive;
 font-family: 'Ruge Boogie', cursive; */
+body {
+    height: 100vh;
+}
+header {
+    border-bottom: 10px solid darkgray;
+}
+.navbar {
+    font-family: 'Sedgwick Ave Display', cursive;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+}
 
-content h1 {
-    font-family: 'Ruge Boogie', cursive;
+.jumbotron {
+    -webkit-box-shadow: 0px 0px 26px 7px rgba(0,0,0,0.68);
+    -moz-box-shadow: 0px 0px 26px 7px rgba(0,0,0,0.68);
+    box-shadow: 0px 0px 26px 7px rgba(0,0,0,0.68);
+}
+.jumboBG {
+    background: url('../images/evil-dead-banner.png') no-repeat center center;
+    object-fit: cover;
+    width: 100%;
+    background-color: black;
+}
+.popup{
+    position:fixed;
+    left:50%;
+    z-index: 1;
+    
+  }
+  .popup .wrapper{
+    position:relative; 
+    left:-50%;
+  }
+  
+  html{background-color:#aaa;}
+
+.subtitle {
+    color: yellow;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+    text-shadow: 4px 3px 2px rgba(0, 0, 0, .5);
     font-weight: bold;
+    font-family: 'Ruge Boogie', cursive;
+}
+.anyKey {
+    text-shadow: 4px 3px 2px rgb(197, 1, .61);
+}
+
+.jumbotron p {
+    font-size: 2em;
+}
+
+.current-word {
+    border: 1px dashed black;
+}
+
+.dropShadow {
+    -webkit-box-shadow: 17px 14px 18px 1px rgba(0, 0, 0, 0.37);
+    -moz-box-shadow: 17px 14px 18px 1px rgba(0, 0, 0, 0.37);
+    box-shadow: 17px 14px 18px 1px rgba(0, 0, 0, 0.37);
 }

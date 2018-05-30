@@ -16,11 +16,12 @@ $('#anyKey').show();
 document.onkeyup = function () {
   newGame();
   $('#anyKey').hide(); // change to alert
-
+  
   let remain = currentWord.length;
   console.log(remain);
-
+  
   document.onkeyup = function (e) {
+    $('#anyKey').hide(); // change to alert
     let guess = e.key;
     let lettersFound = 0; // use lettersFound === currentWordArray.length as win condition
     // check for correct guess. iterate either letters found or guesses.
@@ -49,7 +50,7 @@ document.onkeyup = function () {
           } else if (lettersFound > 0) {} else {
             guesses--;
             $('#guessesLeft').text(guesses);
-            if (guesses < 1) { //game over and reset. change from alert to high z-index html 
+            if (guesses < 1) { //game over and reset. 
               youLose();
             };
           };
@@ -61,16 +62,20 @@ document.onkeyup = function () {
 
 //------------------------FUNCTIONS------------------------//
 function youWin() {
+  $('.anyKey').text(`You Win!`);
+  $('.anyKeyWord').text(`"${currentWord.toUpperCase()}"`);
+  $('#anyKey').show();
   wins++;
   $('#wins').text(wins);
-  alert('You Win!');
   newGame();
 };
 
 function youLose() {
+  $('.anyKey').text('You Lose');
+  $('.anyKeyWord').text(`"${currentWord.toUpperCase()}"`);
+  $('#anyKey').show();
   losses++;
   $('#losses').text(losses);
-  alert("YOU LOSE!");
   newGame();
 };
 
@@ -82,12 +87,13 @@ function newGame() {
   currentWordArray = currentWord.split('');
   currentWordDisplay = []; // build blank array to represent current word
 
-  $('#current-word').text(currentWordDisplay.join(' ')); // print blank current word to site
   $('#guessesMade').text('');
   $('#guessesLeft').text('6');
   console.log(currentWord); // check console to cheat... err developer stuff... yeah
-
+  
   for (i = 0; i < currentWordArray.length; i++) {
     currentWordDisplay.push('_');
   };
+  $('#current-word').text(currentWordDisplay.join(' ')); // print blank current word to site
 };
+
