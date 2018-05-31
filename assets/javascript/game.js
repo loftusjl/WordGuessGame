@@ -9,6 +9,7 @@ var alphaArray = str.split("");
 var guesses = 6;
 var correctGuesses = 0;
 var lettersGuessed = [];
+var guessPic = '';
 
 console.log(`Press any key to start`); // change to alert or HTML element
 $('#anyKey').show();
@@ -49,6 +50,8 @@ document.onkeyup = function () {
             youWin();
           } else if (lettersFound > 0) {} else {
             guesses--;
+            guessPic = './assets/images/' + guesses + 'guesses.jpg';
+            $('#guessesPic').attr('src', guessPic );
             $('#guessesLeft').text(guesses);
             if (guesses < 1) { //game over and reset. 
               youLose();

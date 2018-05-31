@@ -1,7 +1,7 @@
 /* font-family: 'Sedgwick Ave Display', cursive;
 font-family: 'Ruge Boogie', cursive; */
 body {
-    height: 100vh;
+    height: 100%;
 }
 header {
     border-bottom: 10px solid darkgray;
