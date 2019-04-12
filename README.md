@@ -1,7 +1,8 @@
 # [Horror Hangman](https://loftusjl.github.io/)
 
-Try to guess the villain in this horror movie take on the classic game hangman!
+
 ![logo](https://loftusjl.github.io/WordGuessGame/assets/images/evil-dead-banner.png)
+Try to guess the villain in this horror movie take on the classic game hangman!
 
 ## Getting Started
 
